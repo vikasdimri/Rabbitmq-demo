@@ -7,7 +7,7 @@ public interface Messaging {
 
     String MY_MESSAGE = "my-message";
 
-    @Output()
+    @Output(MY_MESSAGE)
     MessageChannel getMyMessageChannel();
 
 }
