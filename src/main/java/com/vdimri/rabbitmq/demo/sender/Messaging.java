@@ -1,4 +1,4 @@
-package com.vdimri.rabbitmq.demo.publisher.messaging;
+package com.vdimri.rabbitmq.demo.sender;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
