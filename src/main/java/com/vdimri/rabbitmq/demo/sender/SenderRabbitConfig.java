@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBinding(Messaging.class)
-public class RabbitConfig {
+public class SenderRabbitConfig {
 }
