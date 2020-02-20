@@ -5,7 +5,7 @@ import org.springframework.messaging.MessageChannel;
 
 public interface Messaging {
 
-    String ADDRESS_MESSAGE = "address";
+    String ADDRESS_MESSAGE = "address_message";
 
     @Input (ADDRESS_MESSAGE)
     MessageChannel getMyMessageChannel();
