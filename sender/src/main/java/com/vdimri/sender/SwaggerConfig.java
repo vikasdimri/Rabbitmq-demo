@@ -1,4 +1,4 @@
-package com.vdimri.rabbitmq.demo.sender;
+package com.vdimri.sender;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

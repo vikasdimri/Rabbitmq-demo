@@ -1,10 +1,12 @@
-package com.vdimri.rabbitmq.demo.sender;
+package com.vdimri.sender;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
     private String addressLine1;
     private String addressLine2;

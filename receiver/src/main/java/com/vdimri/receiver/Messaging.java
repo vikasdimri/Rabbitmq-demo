@@ -1,13 +1,13 @@
-package com.vdimri.rabbitmq.demo.receiver;
+package com.vdimri.receiver;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.MessageChannel;
 
 public interface Messaging {
 
-    String ADDRESS_MESSAGE = "address_message";
+    String ADDRESS = "address";
 
-    @Input (ADDRESS_MESSAGE)
+    @Input (ADDRESS)
     MessageChannel getMyMessageChannel();
 
 }
