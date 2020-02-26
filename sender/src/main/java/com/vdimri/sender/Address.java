@@ -1,12 +1,10 @@
 package com.vdimri.sender;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Address {
     private String addressLine1;
     private String addressLine2;

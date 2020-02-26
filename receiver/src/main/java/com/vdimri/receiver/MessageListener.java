@@ -15,14 +15,7 @@ public class MessageListener {
     }
 
     @StreamListener(Messaging.ADDRESS)
-    public void handleAddressMessage(@Payload Address message){
-        log.info("Add address: ",message.toString());
-        log.info("AddressLine1: ",message.getAddressLine1());
-        log.info("AddressLine2: ",message.getAddressLine2());
-        log.info("City: ",message.getCity());
-        log.info("State: ",message.getState());
-        log.info("Country: ",message.getCountry());
-        log.info("Pin: ",message.getPin());
+    public void handleAddressMessage(@Payload Address message) {
+        log.info("Add address: " + message.toString());
     }
-
 }
