@@ -1,3 +1,4 @@
 rootProject.name = 'rabitmq'
 include 'receiver'
 include 'sender'
+include 'invoker'
