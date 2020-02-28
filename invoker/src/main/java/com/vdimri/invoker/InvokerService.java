@@ -24,10 +24,8 @@ public class InvokerService {
         try {
             if (root == null) {
                 root = readAddressesJson();
-                address = getAddress();
-            } else {
-                address = getAddress();
             }
+            address = getAddress();
         } catch (IOException e) {
             log.error("Error in reading file");
         }
