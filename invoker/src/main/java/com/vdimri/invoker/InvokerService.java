@@ -10,6 +10,9 @@ import org.springframework.util.CollectionUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+
+import static java.lang.Integer.*;
 
 @Service
 @Slf4j
@@ -18,6 +21,7 @@ public class InvokerService {
     private Root root;
     private int offset = 0;
     private int size;
+    private int position = 0;
 
     public Addresses addressGenerator() {
         Addresses address = null;
@@ -40,7 +44,19 @@ public class InvokerService {
             address = addresses.get(offset);
             offset++;
         }
+        if (size == offset) {
+            addressFactory();
+        }
         return address;
+    }
+
+    private void addressFactory() {
+        offset = 0;
+        position++;
+        Random random = new Random();
+        for (Addresses addressToChange : root.getAddresses()) {
+            addressToChange.setPostalCode(String.valueOf(random.nextInt(99999)));
+        }
     }
 
     private Root readAddressesJson() throws IOException {

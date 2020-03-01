@@ -21,7 +21,7 @@ public class InvokerController {
         this.senderBaseUrl = producerBaseUrl;
     }
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 2000)
     public String addPerson() {
         HttpEntity<Addresses> request = new HttpEntity<>(invokerService.addressGenerator());
         ResponseEntity<String> entity = restTemplate.postForEntity(senderBaseUrl + "/api/add", request, String.class);
