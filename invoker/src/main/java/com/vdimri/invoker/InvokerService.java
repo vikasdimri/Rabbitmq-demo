@@ -4,11 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vdimri.invoker.model.Addresses;
 import com.vdimri.invoker.model.Root;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
 
@@ -25,13 +28,13 @@ public class InvokerService {
 
     public Addresses addressGenerator() {
         Addresses address = null;
-        try {
-            if (root == null) {
+        if (root == null) {
+            try {
                 root = readAddressesJson();
+                address = getAddress();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            address = getAddress();
-        } catch (IOException e) {
-            log.error("Error in reading file");
         }
         return address;
     }
@@ -61,9 +64,8 @@ public class InvokerService {
 
     private Root readAddressesJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File jsonFile = new File(getClass().getClassLoader().getResource("addresses.json").getFile());
-        Root root = objectMapper.readValue(jsonFile, Root.class);
-        log.info(root.toString());
-        return root;
+        Resource resource = new ClassPathResource("classpath:addresses.json");
+        InputStream inputStream = resource.getInputStream();
+        return objectMapper.readValue(inputStream, Root.class);
     }
 }
