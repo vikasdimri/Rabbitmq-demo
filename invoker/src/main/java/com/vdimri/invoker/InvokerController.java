@@ -23,10 +23,12 @@ public class InvokerController {
         this.senderBaseUrl = senderBaseUrl;
     }
 
-    @Scheduled(fixedDelay = 25000)
+    @Scheduled(fixedDelay = 10000)
     public String addPerson() {
-        log.info("SenderBaseUrl :::::::::::::::::::"+senderBaseUrl);
+        log.debug("SenderBaseUrl :::::::::::::::::::"+senderBaseUrl);
         HttpEntity<Addresses> request = new HttpEntity<>(invokerService.addressGenerator());
+        log.debug("Request body::::::::::::::"+request.getBody());
+        log.debug("Request header::::::::::::::"+request.getHeaders());
         ResponseEntity<String> entity = restTemplate.postForEntity(senderBaseUrl + "/api/add", request, String.class);
         return entity.getBody();
     }

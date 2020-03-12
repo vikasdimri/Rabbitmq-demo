@@ -24,7 +24,7 @@ public class AddressBookController {
     @ApiOperation(value = "Endpoint to add address in the address book")
     @PostMapping(path= "/add", consumes = "application/json", produces = "application/json")
     public void addInAddressBook(@RequestBody Address request) {
-        log.info("Add address: "+request.toString());
+        log.debug("Add address: "+request.toString());
         Message<Address> message = MessageBuilder.withPayload(request).build();
         this.messaging.getMyMessageChannel().send(message);
     }

@@ -8,7 +8,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -30,11 +33,12 @@ public class InvokerService {
         if (root == null) {
             try {
                 root = readAddressesJson();
-                address = getAddress();
+                log.debug("Root:::::::::::::::::"+root.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        address = getAddress();
         return address;
     }
 
@@ -63,8 +67,10 @@ public class InvokerService {
 
     private Root readAddressesJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Resource resource = new ClassPathResource("classpath:addresses.json");
-        InputStream inputStream = resource.getInputStream();
+        File file = ResourceUtils.getFile("classpath:addresses.json");
+        InputStream inputStream = new FileInputStream(file);
+        //Resource resource = new ClassPathResource("classpath:addresses.json");
+        //InputStream inputStream = resource.getInputStream();
         return objectMapper.readValue(inputStream, Root.class);
     }
 }
