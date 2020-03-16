@@ -11,7 +11,8 @@ dependencies {
 	compile 'com.fasterxml.jackson.core:jackson-databind'
 
 	// micrometer
-	//compile 'io.micrometer:micrometer-spring-legacy'
+	compile 'io.micrometer:micrometer-registry-prometheus'
+	compile 'io.micrometer.prometheus:prometheus-rsocket-spring:0.9.0'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
